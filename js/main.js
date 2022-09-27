@@ -20,3 +20,12 @@ function cls() {
     ctx.clearRect(0, 0, w, h);
     ctx.fillRect(0, 0, w, h);
 }
+
+function generateNumbers(arrLength, k, a, b, c) {
+    const ar = [k];
+    for (let i = 1; i < arrLength; i++) {
+        ar.push(((ar[i-1] * a) % b) + c);
+    }
+    return ar;
+}
+
