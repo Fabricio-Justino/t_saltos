@@ -13,7 +13,7 @@ const rectW = 600 / 10;
 const rectH = 20;
 const m = 20; // margin
 
-let board = [1, 2, 3, 4];
+let board = [-2, 2, 3, 4];
 
 cls();
 function cls() {
@@ -51,5 +51,32 @@ function drawArray(arr, currentPos) {
     });
     ctx.closePath();
 }
+
+function calcNewPosition(arr, currentPos, changeArray = true) {
+    const cur = currentPos;
+    const value = arr[cur];
+    let newPosition = 0;
+
+    /**
+     * ===== RULES =====
+     * 
+     * value > 0 new possition is current possition plus value. 
+     * arr[cur]--
+     * value < 0 new new possition is current possition less the value.
+     * arr[cur]++
+     */
+
+    if (value > 0) {
+        newPosition = (currentPos + value) % arr.length; // surround the array
+        arr[cur] -= changeArray ? 1 : 0;
+    } else if (value < 0) {
+        newPosition = (currentPos + value) % arr.length;
+        newPosition += (newPosition < 0) ? arr.length : 0;
+        arr[currentPos] += changeArray ? 1 : 0;
+    } 
+
+    return newPosition;
+}
+
 
 drawArray(board, 0);
