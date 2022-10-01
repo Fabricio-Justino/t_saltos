@@ -36,8 +36,6 @@ function generateNumbers(arrLength, k, a, b, c) {
 
 function drawArray(arr, currentPos) {
     cls();
-    const value = arr[currentPos];
-
     ctx.beginPath();
     ctx.font = 'serif 12px';
     ctx.textAlign = 'center';
