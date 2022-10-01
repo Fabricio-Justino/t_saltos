@@ -85,3 +85,11 @@ function calcNewPosition(arr, currentPos, changeArray = true) {
     return newPosition;
 }
 
+board = generateNumbers(10, 31, -11, 91, 30);
+drawArray(board, playerPos);
+function draw() {
+    playerPos = calcNewPosition(board, playerPos, true);
+    drawArray(board, playerPos);
+}
+
+$btn.addEventListener('click', draw)
