@@ -34,3 +34,26 @@ function generateNumbers(arrLength, k, a, b, c) {
     return ar;
 }
 
+function drawArray(arr, currentPos) {
+    cls();
+    const value = arr[currentPos];
+
+    ctx.beginPath();
+    ctx.font = 'serif 12px';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    ctx.strokeStyle = 'white';
+    arr.forEach((el, i) => {
+        if (i === currentPos) {
+            ctx.fillStyle = 'blue';
+            ctx.fillRect(m + i * rectW,  rectY, rectW, rectH);
+            ctx.strokeRect(m + i * rectW,  rectY, rectW, rectH);
+        } else {
+            ctx.strokeRect(m + i * rectW,  rectY, rectW, rectH);
+        }
+        ctx.strokeText(el, m + i * rectW + (rectW / 2), rectY + (rectH / 2) );
+    });
+    ctx.closePath();
+}
+
